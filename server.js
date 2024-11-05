@@ -51,6 +51,15 @@ app.get('/new', function(req, res) {
     res.render('pages/new');
 });
 
+// Demo page
+app.get('/demo', async function(req, res) {
+
+  var blog_posts = await prisma.post.findMany();
+  console.log(blog_posts);
+
+  res.render('pages/demo', {blog_posts: blog_posts});
+});
+
 // Create a new post
 app.post('/new', async function(req, res) {
     
